@@ -310,6 +310,18 @@ bool WebVideoServer::handle_list_streams(const async_web_server_cpp::HttpRequest
           connection->write("\">Snapshot</a>)");
           connection->write("</li>");
 
+          connection->write("<li><a href=\"/stream_viewer?topic=");
+          connection->write(*image_topic_itr);
+          connection->write("&type=ros_compressed");
+          connection->write("\">");
+          connection->write(*image_topic_itr);
+          connection->write("</a> (");
+          connection->write("<a href=\"/snapshot?topic=");
+          connection->write(*image_topic_itr);
+          connection->write("&type=ros_compressed");
+          connection->write("\">Snapshot</a>)");          
+          connection->write("</li>");
+
           image_topic_itr = image_topics.erase(image_topic_itr);
         }
         else
